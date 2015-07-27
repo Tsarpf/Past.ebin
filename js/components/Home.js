@@ -5,8 +5,9 @@ export default React.createClass( {
 	render() {
 		return (
 			<div>
-				<h1 className={styles.text}>Start your app here! test</h1>
+				<h1 className={styles.text}>Past ebin</h1>
 				<textarea placeholder="paste your stuff here"/>
+				<button> Ses! </button>
 			</div>
 		);
 	}
