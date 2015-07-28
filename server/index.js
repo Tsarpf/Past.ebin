@@ -4,10 +4,11 @@ var app = express();
 app.use( ( req, res, next ) => {
 	res.header( 'Access-Control-Allow-Origin', '*' );
 	res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
+	next();
 } )
 app.get( '/recent/page/:id', ( req, res ) => {
-	console.log( 'got request for page ' + id );
 	var id = req.params.id;
+	console.log( 'got request for page ' + id );
 	var arr = [
 		'ses ' + id,
 		'sus ' + id + 1,
