@@ -8,7 +8,7 @@ app.use( ( req, res, next ) => {
 	next();
 } )
 
-app.use( express.static(path.join(__dirname, '../')));
+app.use( express.static(path.join(__dirname, '../dist')));
 
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = req.params.id;

@@ -1,6 +1,6 @@
 module.exports = function( grunt ) {
+	var webpackDistConfig = require( './webpack.dist.config.js' );
 	require( 'load-grunt-tasks' )( grunt );
-	var webpackDistConfig = require('./webpack.dist.config.js');
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
 		webpack: {
@@ -11,10 +11,18 @@ module.exports = function( grunt ) {
 		},
 		clean: {
 			build: {
-				src: ['dist']
+				src: [ 'dist' ]
+			}
+		},
+		copy: {
+			build: {
+				files: [ {
+					src: 'index.html',
+					dest: 'dist/'
+				} ]
 			}
 		}
 	} );
 
-	grunt.registerTask( 'build', ['clean', 'webpack']);
-}
+	grunt.registerTask( 'build', [ 'clean', 'copy', 'webpack' ] );
+};
