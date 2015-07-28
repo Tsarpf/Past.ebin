@@ -1,8 +1,8 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-let defaultState = {};
+let defaultState = {recents: []};
 
-export default function( state = defaultState, action ) {
+export default function home( state = defaultState, action ) {
 	switch ( action.type ) {
 		case ActionTypes.FETCH_RECENTS:
 			return {

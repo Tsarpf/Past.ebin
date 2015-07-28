@@ -21,36 +21,37 @@ import {
 }
 from 'react-router';
 
-
 const store = createStore( combineReducers( reducers ) );
 
-export default React.createClass( {
+export default class App extends React.Component {
+	constructor(props, context) {
+		super(props, context);
+	}
+	static propTypes = {
+		history: React.PropTypes.object.isRequired
+	}
 	render() {
 		const {
 			history
 		} = this.props;
 		return (
-			<div>
-				<Provider store={store}>
-					{renderRoutes.bind(null, history)}
-				</Provider>
-
-				{ /* only renders when running in DEV mode */
-					renderDevTools( store )
-				}
-			</div>
+			<Provider store={store}>
+				{renderRoutes.bind(null , history)}
+			</Provider>
 		);
 	}
-} );
+}
 
 
 function renderRoutes( history ) {
-	console.log( 'ses' );
 	return (
 		<Router history={history}>
 			<Route component={Application}>
 				<Route path="/" component={Home} />
 			</Route>
+			{ /* only renders when running in DEV mode */
+				renderDevTools( store )
+			}
 		</Router>
 	)
 }

@@ -8,11 +8,21 @@ import {
 } 
 from 'react-redux';
 
+import { bindActionCreators } from 'redux';
+
+import * as HomeActions from '../actions/home';
+
 @
-connect( state => ( {
-	recents: state.recents
-} ) )
+connect( state => {
+	console.log( state );
+	return {
+		recents: state.Home.recents
+	}
+} )
 export default class Home extends Component {
+	constructor( props, context ) {
+		super( props, context );
+	}
 	static propTypes = {
 		recents: React.PropTypes.array.isRequired
 	}
@@ -20,13 +30,14 @@ export default class Home extends Component {
 		const {
 			recents, dispatch
 		} = this.props;
+		const actions = bindActionCreators(HomeActions, dispatch);
 		return (
 			<div>
-				<textarea placeholder="paste your stuff here"/>
 				{recents.map(paste => 
 					<p> {paste} </p>
 				)}
-				<button> Ses! </button>
+				<button onClick={actions.fetchRecents}> Ses! </button>
+				<textarea placeholder="paste your stuff here"/>
 			</div>
 		)
 	}
