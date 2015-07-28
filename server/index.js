@@ -81,7 +81,8 @@ app.post( '/new', ( req, res ) => {
 	} );
 } );
 
-app.get( '*', express.static( path.join( __dirname, '../dist' ) ) );
+app.use( '*', express.static( path.join( __dirname, '../dist' ) ) );
+//app.get( '/paste/:id', express.static( path.join( __dirname, '../dist' ) ) );
 
 var server = app.listen( 3001, function() {
 	var host = server.address().address;
