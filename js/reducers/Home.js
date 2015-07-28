@@ -1,6 +1,8 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-let defaultState = {recents: ['loading']};
+let defaultState = {
+	recents: [ 'loading' ]
+};
 //let defaultState = {recents: []};
 
 export default function home( state = defaultState, action ) {

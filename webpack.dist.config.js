@@ -16,7 +16,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
+		/*new webpack.optimize.UglifyJsPlugin(),*/
 		devFlagPlugin,
 		new ExtractTextPlugin( 'app.css' )
 	],

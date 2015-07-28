@@ -1,3 +1,4 @@
+console.log( 'kek' );
 var express = require( 'express' );
 var app = express();
 
@@ -8,15 +9,16 @@ app.use( ( req, res, next ) => {
 	next();
 } )
 
-app.use( express.static(path.join(__dirname, '../dist')));
+app.use( express.static( path.join( __dirname, '../dist' ) ) );
 
+let i = 0;
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = req.params.id;
 	console.log( 'got request for page ' + id );
 	var arr = [
-		'ses ' + id,
-		'sus ' + id + 1,
-		'sas ' + id + 2
+		'ses ' + i++,
+		'sus ' + i++,
+		'sas ' + i++ 
 	]
 	console.log( arr );
 	res.json( arr );
