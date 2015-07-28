@@ -5,7 +5,7 @@ import {
 }
 from '../constants/ActionTypes';
 
-const apiUrl = 'localhost:3001';
+const apiUrl = 'prototyping.xyz:3001';
 
 export function fetchPasteById( options ) {
 	const {
