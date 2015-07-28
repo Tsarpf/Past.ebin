@@ -1,5 +1,14 @@
 .text {
-  font-size: 2rem;
-  line-height: 1.5;
-  color: #FF0000cc;
+	font-size: 2rem;
+	line-height: 1.5;
+	color: #FF0000cc;
+}
+
+.paste {
+	white-space: pre-wrap;
+	font-size: 2rem;
+	line-height: 1.5;
+	color: #FF0000cc;
+	background-color: yellow;
+	display: block;
 }

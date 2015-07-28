@@ -1,3 +1,4 @@
+import styles from '../../css/app.css';
 import React from 'react';
 import {
 	connect
@@ -31,8 +32,8 @@ export default class Paste extends React.Component {
 		const id = this.props.params.pasteId;
 		return (
 			<div>
-				<p> {id} </p>
-				<p> {this.props.content} </p>
+				<h2> {id} </h2>
+				<span className={styles.paste}> {this.props.content} </span>
 			</div>
 		);
 	}

@@ -10,7 +10,7 @@ app.use( ( req, res, next ) => {
 	next();
 } )
 
-app.use( bodyParser.json( {
+app.use( bodyParser.text( {
 	limit: '1mb'
 } ) );
 
@@ -49,7 +49,7 @@ app.post( '/new', ( req, res ) => {
 		id: id,
 		state: postStatuses.SUCCEEDED
 	} ) );
-	var content = req.body.content ? req.body.content : 'no content';
+	var content = req.body ? req.body : 'no content';
 	var name = content.substring( 0, 10 );
 	posts.push( {
 		content, name
