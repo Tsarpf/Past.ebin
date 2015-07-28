@@ -78,16 +78,16 @@ export default class Home extends Component {
 		var content = this.state.pasteContent;
 		return (
 			<div>
-				<textarea placeholder="paste your stuff here" value={content} onChange={::this.handleChange}/>
+				<textarea placeholder="put yo stuff in here" value={content} onChange={::this.handleChange}/>
 				<br/>
 				<button onClick={ ::this.postNew }> Ses! </button>
-				<ul>
+				<ol>
 				{ recents.map( paste =>
 					<li>
 						<Link to={`/paste/${paste.id}`}>{paste.name}</Link>
 					</li>
-				) }
-				</ul>
+				).reverse() }
+				</ol>
 			</div>
 		);
 	}

@@ -29,10 +29,8 @@ export default class Paste extends React.Component {
 		} );
 	}
 	render() {
-		const id = this.props.params.pasteId;
 		return (
 			<div>
-				<h2> {id} </h2>
 				<span className={styles.paste}> {this.props.content} </span>
 			</div>
 		);

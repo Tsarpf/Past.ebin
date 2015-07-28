@@ -53,11 +53,9 @@ export function postNewPaste( options ) {
 				method: 'post',
 				headers: {
 					Accept: 'application/json',
-					'Content-Type': 'application/json'
+					'Content-Type': 'text/plain'
 				},
-				body: JSON.stringify( {
-					content: content
-				} )
+				body: content
 			} )
 			.then( checkStatus )
 			.then( parseJSON )
