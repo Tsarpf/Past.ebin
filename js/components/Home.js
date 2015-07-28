@@ -17,7 +17,7 @@ import * as HomeActions from '../actions/home';
 import * as PasteStates from '../constants/NewPasteAttempt';
 
 import {
-	Link, Router
+	Link
 }
 from 'react-router';
 
@@ -35,11 +35,14 @@ export default class Home extends Component {
 		super( props, context );
 		this.actions = bindActionCreators( HomeActions, props.dispatch );
 		this.state = {
-			pasteContent: this.props.pasteConent || ''
+			pasteContent: this.props.pasteContent || ''
 		};
 	}
 	static propTypes = {
 		recents: React.PropTypes.array.isRequired
+	}
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired
 	}
 	componentWillMount() {
 		this.actions.fetchRecents();
@@ -47,7 +50,8 @@ export default class Home extends Component {
 	componentWillReceiveProps( newProps ) {
 		switch ( newProps.newPasteState ) {
 			case PasteStates.SUCCEEDED:
-				Router.transitionTo( '/paste/' + newProps.newPasteId );
+				this.context.router.transitionTo( '/paste/' + newProps.newPasteId );
+				this.actions.resetPostData();
 				break;
 			case PasteStates.FAILED:
 				console.log( 'paste failed' );
@@ -62,7 +66,9 @@ export default class Home extends Component {
 		} );
 	}
 	postNew() {
-		this.actions.postNewPaste( { content: this.state.pasteContent } );
+		this.actions.postNewPaste( {
+			content: this.state.pasteContent
+		} );
 	}
 	render() {
 		const {

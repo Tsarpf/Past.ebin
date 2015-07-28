@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 import {
-	FETCH_RECENTS, POST_NEW_PASTE_SUCCEEDED
+	FETCH_RECENTS, POST_NEW_PASTE_SUCCEEDED, RESET_POST_DATA
 }
 from '../constants/ActionTypes';
 
@@ -65,5 +65,11 @@ export function postNewPaste( options ) {
 					result: data
 				} );
 			} );
+	};
+}
+
+export function resetPostData() {
+	return {
+		type: RESET_POST_DATA
 	};
 }

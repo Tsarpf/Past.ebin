@@ -19,7 +19,12 @@ export default function home( state = defaultState, action ) {
 		case ActionTypes.POST_NEW_PASTE_SUCCEEDED:
 			return {
 				recents: state.recents,
-				postData: action.data
+				postData: action.result
+			};
+		case ActionTypes.RESET_POST_DATA:
+			return {
+				recents: state.recents,
+				postData: defaultState.postData
 			};
 		default:
 			return state;

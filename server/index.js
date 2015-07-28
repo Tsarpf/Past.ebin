@@ -14,12 +14,28 @@ let i = 0;
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = req.params.id;
 	console.log( 'got request for page ' + id );
-	var arr = [
-		{name: 'ses', id: i++},
-		{name: 'sus', id: i++},
-		{name: 'sas', id: i++}
-	]
+	var arr = [ {
+		name: 'ses',
+		id: i++
+	}, {
+		name: 'sus',
+		id: i++
+	}, {
+		name: 'sas',
+		id: i++
+	} ]
 	res.json( arr );
+} );
+
+var postStatuses = require('../js/constants/NewPasteAttempt');
+var id = 0;
+app.post( '/new', ( req, res ) => {
+	console.log( req.body );
+	res.send(JSON.stringify({
+		id: id++,
+		state: postStatuses.SUCCEEDED
+	}));
+	res.end();
 } );
 
 app.get( '*', express.static( path.join( __dirname, '../dist' ) ) );
