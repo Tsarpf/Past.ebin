@@ -48,7 +48,7 @@ function getPaste( id, callback ) {
 	} );
 }
 
-app.get( '/paste/:id', ( req, res ) => {
+app.get( '/get/paste/:id', ( req, res ) => {
 	var id = req.params.id;
 	getPaste( id, ( paste ) => {
 		res.json( paste );

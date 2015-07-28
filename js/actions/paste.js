@@ -11,7 +11,7 @@ export function fetchPasteById( options ) {
 	const {
 		id
 	} = options;
-	const url = `http://${apiUrl}/paste/${id}`;
+	const url = `http://${apiUrl}/get/paste/${id}`;
 	console.log( url );
 	return dispatch => {
 		fetch( url ).then( res => {
