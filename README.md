@@ -11,4 +11,4 @@ Key libs:
 - put paste.sh from this repository somewhere like ~/ for example. 
 - Add `alias paste="~/paste.sh"` to f.ex .bashrc
 - Fix the url in paste.sh to target where your instance of the pastebin is running
-- paste files from the commandline simply with `paste <filename>` (without the brackets of course)
+- paste files from the command-line simply with `paste <filename>` (without the brackets of course)
