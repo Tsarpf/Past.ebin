@@ -13,7 +13,7 @@
     "whatwg-fetch": "^0.9.0"
   },
   "scripts": {
-    "start": "DEBUG=1 node server.js",
+    "start": "DEBUG=1 node webpack-dev-server.js",
     "build": "grunt build"
   },
   "devDependencies": {
