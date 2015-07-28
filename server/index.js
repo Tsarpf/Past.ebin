@@ -10,7 +10,9 @@ app.use( ( req, res, next ) => {
 	next();
 } )
 
-app.use( bodyParser.json() );
+app.use( bodyParser.json( {
+	limit: '1mb'
+} ) );
 
 app.use( express.static( path.join( __dirname, '../dist' ) ) );
 
