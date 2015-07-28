@@ -15,6 +15,7 @@ from '../utils/devTools';
 import * as reducers from '../reducers/index';
 import Application from '../components/Application';
 import Home from '../components/Home';
+import Paste from '../components/Paste';
 
 import {
 	Router, Route
@@ -50,6 +51,7 @@ function renderRoutes( history ) {
 		<Router history={history}>
 			<Route component={Application}>
 				<Route path="/" component={Home} />
+				<Route path="/paste/:pasteId" component={Paste}/>
 			</Route>
 			{ /* only renders when running in DEV mode */
 				renderDevTools( store )

@@ -15,19 +15,14 @@ app.get( '/recent/page/:id', ( req, res ) => {
 	var id = req.params.id;
 	console.log( 'got request for page ' + id );
 	var arr = [
-		'ses ' + i++,
-		'sus ' + i++,
-		'sas ' + i++ 
+		{name: 'ses', id: i++},
+		{name: 'sus', id: i++},
+		{name: 'sas', id: i++}
 	]
-	console.log( arr );
 	res.json( arr );
-	res.end();
 } );
 
-app.get( '/', function( req, res ) {
-	console.log( 'got request for root' );
-	res.send( 'Hello World!' );
-} );
+app.get( '*', express.static( path.join( __dirname, '../dist' ) ) );
 
 var server = app.listen( 3001, function() {
 	var host = server.address().address;

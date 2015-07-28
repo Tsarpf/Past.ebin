@@ -15,6 +15,11 @@ from 'redux';
 
 import * as HomeActions from '../actions/home';
 
+import {
+	Link
+}
+from 'react-router';
+
 @
 connect( state => {
 	console.log( state );
@@ -40,10 +45,12 @@ export default class Home extends Component {
 		return (
 			<div>
 				{recents.map( paste =>
-					<p> {paste} </p>
+					<p>
+						<Link to={`/paste/${paste.id}`}>{paste.name}</Link>
+					</p>
 				)}
-				<button onClick={this.actions.fetchRecents}> Ses! </button>
 				<textarea placeholder="paste your stuff here"/>
+				<button onClick={this.actions.fetchRecents}> Ses! </button>
 			</div>
 		);
 	}
