@@ -1,4 +1,3 @@
-console.log( 'kek' );
 var express = require( 'express' );
 var app = express();
 

@@ -10,14 +10,10 @@ export function fetchRecents( options ) {
 		pageOffset
 	} = options || {};
 	const url = `http://${apiUrl}/recent/page/${pageOffset ? pageOffset : 0}`;
-	console.log( url );
-	console.log( 'asdf :(' );
+	console.log( `using api url ${url} ` );
 	return dispatch => {
 		fetch( url ).then( res => {
-			console.log( 'got response' );
 			res.json().then( result => {
-				console.log( 'ses' );
-				console.log( result );
 				dispatch( {
 					type: FETCH_RECENTS,
 					recents: result
