@@ -4,21 +4,24 @@ import {
 }
 from '../constants/ActionTypes';
 
-const apiUrl = 'localhost:3000';
+const apiUrl = 'localhost:3001';
 export function fetchRecents( options ) {
 	const {
 		pageOffset
 	} = options;
-	const url = `http://${apiUrl}/recent/?page=${pageOffset ? pageOffset : 0}`;
-	//console.log('ses' + `$(apiUrl)/recent/?page=${pageOffset ? pageOffset : 0}`);
-	console.log(url);
+	const url = `http://${apiUrl}/recent/page/${pageOffset ? pageOffset : 0}`;
+	console.log( url );
 
 	return dispatch => {
 		fetch( url ).then( res => {
-			res.json().then( result => dispatch( {
-				type: FETCH_RECENTS,
-				recents: result
-			} ) )
+			console.log( 'got response' );
+			res.json().then( result => {
+				console.log( 'ses' );
+				dispatch( {
+					type: FETCH_RECENTS,
+					recents: result
+				} )
+			} )
 		} )
 	}
 }
