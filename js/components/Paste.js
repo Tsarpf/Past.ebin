@@ -12,7 +12,6 @@ import * as PasteActions from '../actions/paste';
 
 @
 connect( state => {
-	console.log( state );
 	return {
 		content: state.Paste.content
 	};

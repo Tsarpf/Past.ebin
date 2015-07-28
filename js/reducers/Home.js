@@ -4,7 +4,7 @@ let defaultState = {
 	recents: [ 'loading' ],
 	postData: {
 		state: null,
-		id: null
+		_id: null
 	}
 };
 //let defaultState = {recents: []};

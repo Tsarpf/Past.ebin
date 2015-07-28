@@ -23,7 +23,6 @@ from 'react-router';
 
 @
 connect( state => {
-	console.log( state );
 	return {
 		recents: state.Home.recents,
 		newPasteState: state.Home.postData.state,
@@ -84,7 +83,7 @@ export default class Home extends Component {
 				<ol>
 				{ recents.map( paste =>
 					<li>
-						<Link to={`/paste/${paste.id}`}>{paste.name}</Link>
+						<Link to={`/paste/${paste._id}`}>{paste.name}</Link>
 					</li>
 				).reverse() }
 				</ol>

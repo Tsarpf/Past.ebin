@@ -1,6 +1,16 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import Paste from './paste.schema';
+
+import mongoose from 'mongoose';
+mongoose.connect( 'mongodb://localhost/test' );
+var db = mongoose.connection;
+db.on( 'error', console.error.bind( console, 'connection error:' ) );
+db.once( 'open', function( callback ) {
+
+} );
+
 
 var app = express();
 
@@ -19,43 +29,57 @@ app.use( express.static( path.join( __dirname, '../dist' ) ) );
 let posts = [];
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = parseInt( req.params.id );
-
-	var arr = [];
-	for ( var i = 0; i < posts.length; i++ ) {
-		arr.push( getPaste( i ) );
-	}
-
-	res.json( arr );
+	Paste.find().limit( 20 ).exec( ( err, docs ) => {
+		if ( !err ) {
+			res.json( docs );
+		} else {
+			console.log( err );
+		}
+	} );
 } );
 
-function getPaste( id ) {
-	var obj = {
-		id: id,
-		content: posts[ id ].content,
-		name: posts[ id ].name,
-	}
-	return obj;
+function getPaste( id, callback ) {
+	Paste.findById( id, ( err, doc ) => {
+		if ( !err ) {
+			callback( doc );
+		} else {
+			console.log( err );
+		}
+	} );
 }
 
 app.get( '/paste/:id', ( req, res ) => {
-	var id = parseInt( req.params.id );
-	res.json( getPaste( id ) );
+	var id = req.params.id;
+	getPaste( id, ( paste ) => {
+		console.log(paste);
+		res.json( paste );
+	} );
 } );
 
 var postStatuses = require( '../js/constants/NewPasteAttempt' );
 var id = 0;
 app.post( '/new', ( req, res ) => {
-	res.send( JSON.stringify( {
-		id: id,
-		state: postStatuses.SUCCEEDED
-	} ) );
 	var content = req.body ? req.body : 'no content';
 	var name = content.substring( 0, 10 );
-	posts.push( {
+	var paste = new Paste( {
 		content, name
 	} );
-	res.end();
-	id++;
+
+	paste.save( ( err, doc ) => {
+		if ( err ) {
+			console.log( 'error' );
+			console.log( err );
+			res.send( JSON.stringify( {
+				state: postStatuses.FAILED
+			} ) );
+		} else {
+			res.send( JSON.stringify( {
+				id: doc._id,
+				state: postStatuses.SUCCEEDED
+			} ) );
+		}
+		res.end();
+	} );
 } );
 
 app.get( '*', express.static( path.join( __dirname, '../dist' ) ) );
