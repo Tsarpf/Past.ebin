@@ -51,7 +51,6 @@ function getPaste( id, callback ) {
 app.get( '/paste/:id', ( req, res ) => {
 	var id = req.params.id;
 	getPaste( id, ( paste ) => {
-		console.log(paste);
 		res.json( paste );
 	} );
 } );
