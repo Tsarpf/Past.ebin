@@ -1,5 +1,9 @@
 import React from 'react';
 import styles from '../../css/app.css';
+import {
+	Link
+}
+from 'react-router';
 export default class Application extends React.Component {
 	constructor( props, context ) {
 		super( props, context );
@@ -7,7 +11,9 @@ export default class Application extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className={styles.text}>Past ebin header placeholder</h1>
+				<h1 className={styles.text}>
+					<Link to="/">Past ebin</Link>
+				</h1>
 				<div id="ses">
 					{this.props.children}
 				</div>
