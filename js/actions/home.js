@@ -8,7 +8,7 @@ const apiUrl = 'localhost:3001';
 export function fetchRecents( options ) {
 	const {
 		pageOffset
-	} = options;
+	} = options || {};
 	const url = `http://${apiUrl}/recent/page/${pageOffset ? pageOffset : 0}`;
 	console.log( url );
 
@@ -20,8 +20,8 @@ export function fetchRecents( options ) {
 				dispatch( {
 					type: FETCH_RECENTS,
 					recents: result
-				} )
-			} )
-		} )
-	}
+				} );
+			} );
+		} );
+	};
 }

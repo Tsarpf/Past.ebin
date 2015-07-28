@@ -24,8 +24,8 @@ from 'react-router';
 const store = createStore( combineReducers( reducers ) );
 
 export default class App extends React.Component {
-	constructor(props, context) {
-		super(props, context);
+	constructor( props, context ) {
+		super( props, context );
 	}
 	static propTypes = {
 		history: React.PropTypes.object.isRequired
@@ -36,12 +36,11 @@ export default class App extends React.Component {
 		} = this.props;
 		return (
 			<Provider store={store}>
-				{renderRoutes.bind(null , history)}
+				{renderRoutes.bind( null, history ) }
 			</Provider>
 		);
 	}
 }
-
 
 function renderRoutes( history ) {
 	return (
@@ -53,5 +52,5 @@ function renderRoutes( history ) {
 				renderDevTools( store )
 			}
 		</Router>
-	)
+	);
 }

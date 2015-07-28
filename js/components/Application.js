@@ -1,9 +1,5 @@
 import React from 'react';
 import styles from '../../css/app.css';
-import {
-	connect
-}
-from 'react-redux';
 export default class Application extends React.Component {
 	constructor( props, context ) {
 		super( props, context );
@@ -11,7 +7,7 @@ export default class Application extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className={styles.text}>Past ebin header placeholder</h1> 
+				<h1 className={styles.text}>Past ebin header placeholder</h1>
 				<div id="ses">
 					{this.props.children}
 				</div>

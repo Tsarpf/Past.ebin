@@ -1,11 +1,15 @@
 var express = require( 'express' );
 var app = express();
 
+var path = require( 'path' );
 app.use( ( req, res, next ) => {
 	res.header( 'Access-Control-Allow-Origin', '*' );
 	res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
 	next();
 } )
+
+app.use( express.static(path.join(__dirname, '../')));
+
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = req.params.id;
 	console.log( 'got request for page ' + id );
@@ -14,7 +18,7 @@ app.get( '/recent/page/:id', ( req, res ) => {
 		'sus ' + id + 1,
 		'sas ' + id + 2
 	]
-	console.log(arr);
+	console.log( arr );
 	res.json( arr );
 	res.end();
 } );
