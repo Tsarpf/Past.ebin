@@ -1,41 +1,59 @@
-var express = require( 'express' );
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
+
 var app = express();
 
-var path = require( 'path' );
 app.use( ( req, res, next ) => {
 	res.header( 'Access-Control-Allow-Origin', '*' );
 	res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
 	next();
 } )
 
+app.use( bodyParser.json() );
+
 app.use( express.static( path.join( __dirname, '../dist' ) ) );
 
-let i = 0;
+let posts = [];
 app.get( '/recent/page/:id', ( req, res ) => {
-	var id = req.params.id;
-	console.log( 'got request for page ' + id );
-	var arr = [ {
-		name: 'ses',
-		id: i++
-	}, {
-		name: 'sus',
-		id: i++
-	}, {
-		name: 'sas',
-		id: i++
-	} ]
+	var id = parseInt( req.params.id );
+
+	var arr = [];
+	for ( var i = 0; i < posts.length; i++ ) {
+		arr.push( getPaste( i ) );
+	}
+
 	res.json( arr );
 } );
 
-var postStatuses = require('../js/constants/NewPasteAttempt');
+function getPaste( id ) {
+	var obj = {
+		id: id,
+		content: posts[ id ].content,
+		name: posts[ id ].name,
+	}
+	return obj;
+}
+
+app.get( '/paste/:id', ( req, res ) => {
+	var id = parseInt( req.params.id );
+	res.json( getPaste( id ) );
+} );
+
+var postStatuses = require( '../js/constants/NewPasteAttempt' );
 var id = 0;
 app.post( '/new', ( req, res ) => {
-	console.log( req.body );
-	res.send(JSON.stringify({
-		id: id++,
+	res.send( JSON.stringify( {
+		id: id,
 		state: postStatuses.SUCCEEDED
-	}));
+	} ) );
+	var content = req.body.content ? req.body.content : 'no content';
+	var name = content.substring( 0, 10 );
+	posts.push( {
+		content, name
+	} );
 	res.end();
+	id++;
 } );
 
 app.get( '*', express.static( path.join( __dirname, '../dist' ) ) );

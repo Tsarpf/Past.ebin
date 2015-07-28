@@ -43,6 +43,8 @@ export function postNewPaste( options ) {
 		content
 	} = options;
 
+	console.log( content );
+
 	const url = `http://${apiUrl}/new/`;
 	console.log( `using post url ${url} ` );
 
