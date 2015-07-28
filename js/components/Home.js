@@ -39,7 +39,8 @@ export default class Home extends Component {
 		};
 	}
 	static propTypes = {
-		recents: React.PropTypes.array.isRequired
+		recents: React.PropTypes.array.isRequired,
+		pasteContent: React.PropTypes.string
 	}
 	static contextTypes = {
 		router: React.PropTypes.object.isRequired
@@ -74,17 +75,18 @@ export default class Home extends Component {
 		const {
 			recents
 		} = this.props;
+		var content = this.state.pasteContent;
 		return (
 			<div>
-				<textarea placeholder="paste your stuff here" value={this.state.pasteContent} onChange={this.handleChange}/>
+				<textarea placeholder="paste your stuff here" value={content} onChange={::this.handleChange}/>
 				<br/>
 				<button onClick={ ::this.postNew }> Ses! </button>
 				<ul>
-				{recents.map( paste =>
+				{ recents.map( paste =>
 					<li>
 						<Link to={`/paste/${paste.id}`}>{paste.name}</Link>
 					</li>
-				)}
+				) }
 				</ul>
 			</div>
 		);
