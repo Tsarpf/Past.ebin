@@ -12,4 +12,7 @@
 	/*color: #FF0000cc;*/
 	background-color: yellow;
 	display: block;
+    -moz-tab-size: 4; /* Code for Firefox */
+    -o-tab-size: 4; /* Code for Opera 10.6-12.1 */
+    tab-size: 4;
 }
