@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "babel-runtime": "^5.8.9",
+    "belle": "^1.1.1",
     "lodash": "^3.10.0",
     "react": "^0.13.3",
     "react-redux": "^0.2.2",

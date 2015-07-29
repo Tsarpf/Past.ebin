@@ -20,6 +20,8 @@ import {
 	Link
 }
 from 'react-router';
+import { TextInput } from 'belle';
+
 
 @
 connect( state => {
@@ -77,7 +79,7 @@ export default class Home extends Component {
 		var content = this.state.pasteContent;
 		return (
 			<div>
-				<textarea placeholder="put yo stuff in here" value={content} onChange={::this.handleChange}/>
+				<TextInput placeholder="put yo stuff in here" value={content} onChange={::this.handleChange} allowNewLine={ true }/>
 				<br/>
 				<button onClick={ ::this.postNew }> Ses! </button>
 				<ol>

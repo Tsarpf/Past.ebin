@@ -5,10 +5,11 @@
 }
 
 .paste {
+    border-top: 1px solid #f2f2f2;
 	white-space: pre-wrap;
 	font-size: 1.5rem;
 	line-height: 1.5;
-	color: #FF0000cc;
+	/*color: #FF0000cc;*/
 	background-color: yellow;
 	display: block;
 }

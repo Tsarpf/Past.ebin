@@ -9,6 +9,7 @@ import {
 }
 from 'redux';
 import * as PasteActions from '../actions/paste';
+import { Card } from 'belle';
 
 @
 connect( state => {
@@ -30,7 +31,7 @@ export default class Paste extends React.Component {
 	render() {
 		return (
 			<div>
-				<span className={styles.paste}> {this.props.content} </span>
+				<Card className={styles.paste}> {this.props.content} </Card>
 			</div>
 		);
 	}
