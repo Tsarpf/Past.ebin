@@ -29,7 +29,7 @@ app.use( express.static( path.join( __dirname, '../dist' ) ) );
 let posts = [];
 app.get( '/recent/page/:id', ( req, res ) => {
 	var id = parseInt( req.params.id );
-	Paste.find().limit( 20 ).exec( ( err, docs ) => {
+	Paste.find().sort( { _id: -1 } ).limit( 20 ).exec( ( err, docs ) => {
 		if ( !err ) {
 			res.json( docs );
 		} else {
