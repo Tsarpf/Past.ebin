@@ -17,6 +17,7 @@ export default class Application extends React.Component {
 				<div id="ses">
 					{this.props.children}
 				</div>
+                <hr/>
 				<p> Footer placeholder </p>
 			</div>
 		);

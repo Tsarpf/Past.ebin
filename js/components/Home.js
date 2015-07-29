@@ -2,7 +2,7 @@ import React, {
 	Component
 }
 from 'react';
-//import styles from '../../css/app.css';
+import styles from '../../css/app.css';
 import {
 	connect
 }
@@ -20,7 +20,7 @@ import {
 	Link
 }
 from 'react-router';
-import { TextInput } from 'belle';
+import { TextInput, Button } from 'belle';
 
 @
 connect( state => {
@@ -80,7 +80,9 @@ export default class Home extends Component {
 			<div>
 				<TextInput placeholder="put yo stuff in here" value={content} onChange={::this.handleChange} allowNewLine={ true }/>
 				<br/>
-				<button onClick={ ::this.postNew }> Ses! </button>
+				<Button onClick={ ::this.postNew }> Paste </Button>
+
+                <h3 className={styles.recentHeader}> Last 20 pastes </h3>
 				<ol>
 				{ recents.map( paste =>
 					<li>

@@ -7,12 +7,16 @@
 .paste {
     border-top: 1px solid #f2f2f2;
 	white-space: pre-wrap;
-	font-size: 1.5rem;
-	line-height: 1.5;
+	font-size: 1.2rem;
+	line-height: 1.3;
 	/*color: #FF0000cc;*/
 	background-color: yellow;
 	display: block;
     -moz-tab-size: 4; /* Code for Firefox */
     -o-tab-size: 4; /* Code for Opera 10.6-12.1 */
     tab-size: 4;
+}
+
+.recentHeader {
+    margin-top: 50px;
 }
