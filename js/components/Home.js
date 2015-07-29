@@ -20,7 +20,7 @@ import {
 	Link
 }
 from 'react-router';
-import { TextInput, Button } from 'belle';
+import { Card, TextInput, Button } from 'belle';
 
 @
 connect( state => {
@@ -83,13 +83,11 @@ export default class Home extends Component {
 				<Button onClick={ ::this.postNew }> Paste </Button>
 
                 <h3 className={styles.recentHeader}> Last 20 pastes </h3>
-				<ol>
 				{ recents.map( paste =>
-					<li>
-						<Link to={`/paste/${paste._id}`}>{paste.name}</Link>
-					</li>
+                    <Card className={styles.paste}>
+                        <Link to={`/paste/${paste._id}`}>{paste.name}</Link>
+                    </Card>
 				) }
-				</ol>
 			</div>
 		);
 	}
