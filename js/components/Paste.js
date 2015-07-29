@@ -9,7 +9,7 @@ import {
 }
 from 'redux';
 import * as PasteActions from '../actions/paste';
-import { Card } from 'belle';
+import { Card } from 'belle';
 
 @
 connect( state => {

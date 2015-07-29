@@ -20,8 +20,7 @@ import {
 	Link
 }
 from 'react-router';
-import { TextInput } from 'belle';
-
+import { TextInput } from 'belle';
 
 @
 connect( state => {
@@ -87,7 +86,7 @@ export default class Home extends Component {
 					<li>
 						<Link to={`/paste/${paste._id}`}>{paste.name}</Link>
 					</li>
-				).reverse() }
+				) }
 				</ol>
 			</div>
 		);
