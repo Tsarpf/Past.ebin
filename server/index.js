@@ -5,20 +5,19 @@ import Paste from './paste.schema';
 
 import mongoose from 'mongoose';
 mongoose.connect( 'mongodb://localhost/test' );
-var db = mongoose.connection;
+let db = mongoose.connection;
 db.on( 'error', console.error.bind( console, 'connection error:' ) );
-db.once( 'open', function( callback ) {
+db.once( 'open', function() {
 
 } );
 
-
-var app = express();
+let app = express();
 
 app.use( ( req, res, next ) => {
 	res.header( 'Access-Control-Allow-Origin', '*' );
 	res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept' );
 	next();
-} )
+} );
 
 app.use( bodyParser.text( {
 	limit: '1mb'
@@ -26,9 +25,8 @@ app.use( bodyParser.text( {
 
 app.use( express.static( path.join( __dirname, '../dist' ) ) );
 
-let posts = [];
 app.get( '/recent/page/:id', ( req, res ) => {
-	var id = parseInt( req.params.id );
+	//let id = parseInt( req.params.id );
 	Paste.find().sort( { _id: -1 } ).limit( 20 ).exec( ( err, docs ) => {
 		if ( !err ) {
 			res.json( docs );
@@ -55,8 +53,7 @@ app.get( '/get/paste/:id', ( req, res ) => {
 	} );
 } );
 
-var postStatuses = require( '../js/constants/NewPasteAttempt' );
-var id = 0;
+let postStatuses = require( '../js/constants/NewPasteAttempt' );
 app.post( '/new', ( req, res ) => {
 	var content = req.body ? req.body : 'no content';
 	var name = content.substring( 0, 10 );
@@ -84,7 +81,7 @@ app.post( '/new', ( req, res ) => {
 app.use( '*', express.static( path.join( __dirname, '../dist' ) ) );
 //app.get( '/paste/:id', express.static( path.join( __dirname, '../dist' ) ) );
 
-var server = app.listen( 3001, function() {
+let server = app.listen( 3001, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 
